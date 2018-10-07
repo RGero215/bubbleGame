@@ -129,8 +129,16 @@ class GameScene: SKScene {
             } else if node.name == "gameOver" {
                 state = .title
                 createSquare.removeFromParent()
+                goToGameScene()
             }
             
         }
+    }
+    
+    func goToGameScene(){
+        let gameScene:GameScene = GameScene(size: self.view!.bounds.size) // create your new scene
+        let transition = SKTransition.fade(withDuration: 1.0) // create type of transition (you can check in documentation for more transtions)
+        gameScene.scaleMode = SKSceneScaleMode.fill
+        self.view!.presentScene(gameScene, transition: transition)
     }
 }
